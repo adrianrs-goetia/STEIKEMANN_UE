@@ -55,7 +55,7 @@ public:	// Functions
 
 	// Pawn sensing
 	UFUNCTION()
-		void AIOnSeePawn(APawn* pawn);
+		void AIOnSeePawn(APawn* inpawn);
 	UFUNCTION()
 		void AIHearNoise(APawn* InstigatorPawn, const FVector& Location, float Volume);
 	void SpotPlayer();

@@ -1248,7 +1248,7 @@ UPhysicalMaterial* ASteikemannCharacter::DetectPhysMaterial()
 		return Hit.PhysMaterial.Get();
 
 		// Decrepid 
-		GetMoveComponent()->Traced_GroundFriction = Hit.PhysMaterial->Friction;
+		/*GetMoveComponent()->Traced_GroundFriction = Hit.PhysMaterial->Friction;
 		TEnumAsByte<EPhysicalSurface> surface = Hit.PhysMaterial->SurfaceType;
 
 		FString string;
@@ -1263,7 +1263,7 @@ UPhysicalMaterial* ASteikemannCharacter::DetectPhysMaterial()
 			break;
 		default:
 			break;
-		}
+		}*/
 	}
 	return nullptr;
 }
@@ -1505,7 +1505,6 @@ void ASteikemannCharacter::GrappleDynamicGuideCamera_Gamepad(AActor* target, flo
 	if (!target) return;
 
 	FVector input = InputVectorRaw;
-	FVector Direction;
 
 	FVector grappled = target->GetActorLocation();
 	grappled.Z = GetActorLocation().Z;

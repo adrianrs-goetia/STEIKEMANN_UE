@@ -995,6 +995,9 @@ public: /* ------- GrappleTargetInterface ------ */
 public:	// AttackInterface
 	virtual void Cause_LeewayPause_Pure(float Pausetime) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AttackInterface|Grapplehook")
+		float AttackInterface_LeewayPause_Time{ 1.f };
+
 public: /* ------- Native Variables and functions -------- */
 	void LeftTriggerClick();
 	void LeftTriggerUn_Click();

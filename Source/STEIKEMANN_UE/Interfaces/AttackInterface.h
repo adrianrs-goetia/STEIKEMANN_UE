@@ -64,10 +64,10 @@ public:
 	virtual void IA_Receive_Pogo_Pure(){}
 
 	FTimerHandle TH_IAttack_LeewayPause;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AttackInterface|Grapplehook")
+	/*UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AttackInterface|Grapplehook")
 		float AttackInterface_LeewayPause_Time{ 1.f };
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AttackInterface|Grapplehook")
-		float AttackInterface_LeewayPause_Timedilation{ 0.35f };
+		float AttackInterface_LeewayPause_Timedilation{ 0.35f };*/
 	UFUNCTION(BlueprintNativeEvent, Category = "AttackInterface|Stun")
 		void Receive_LeewayPause();
 	UFUNCTION(BlueprintNativeEvent, Category = "AttackInterface|Stun")

@@ -1,0 +1,1 @@
+"C:\Program Files\Epic Games\UE_5.5\Engine\Build\BatchFiles\Build.bat" STEIKEMANN_UEEditor Win64 Development -Project="C:\Users\adria\Documents\_Steikemann\STEIKEMANN_UE\STEIKEMANN_UE.uproject" -WaitMutex -FromMsBuild -architecture=x64

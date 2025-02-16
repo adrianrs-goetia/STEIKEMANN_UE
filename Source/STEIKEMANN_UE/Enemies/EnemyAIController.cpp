@@ -13,6 +13,7 @@
 
 #include "Perception/PawnSensingComponent.h"
 #include "../WorldStatics/SteikeWorldStatics.h"
+#include "C:\Program Files\Epic Games\UE_5.5\Engine\Source\Runtime\AIModule\Classes\Navigation\PathFollowingComponent.h"
 
 AEnemyAIController::AEnemyAIController()
 {
@@ -137,7 +138,7 @@ void AEnemyAIController::IdleUpdate_Red(float DeltaTime)
 	if (m_EIdleState == EIdleState::MoveTo_GuardLocation)
 	{
 		EPathFollowingRequestResult::Type result = MoveToLocation(IdleLocation);
-		if (result == EPathFollowingRequestResult::AlreadyAtGoal) {
+		if (result == EPathFollowingRequestResult::Type::AlreadyAtGoal) {
 			m_EIdleState = EIdleState::Guard;
 		}
 	}
@@ -148,7 +149,7 @@ void AEnemyAIController::IdleUpdate_PinkTeal(float DeltaTime)
 	if (m_EIdleState == EIdleState::MovingTo_SleepLocation)
 	{
 		EPathFollowingRequestResult::Type result = MoveToLocation(IdleLocation, Idle_SleepingLocationAcceptanceRadius);
-		if (result == EPathFollowingRequestResult::AlreadyAtGoal) 
+		if (result == EPathFollowingRequestResult::Type::AlreadyAtGoal) 
 		{
 			m_EIdleState = EIdleState::Sleeping;
 			m_PawnOwner->SleepingBegin();
@@ -156,11 +157,11 @@ void AEnemyAIController::IdleUpdate_PinkTeal(float DeltaTime)
 	}
 }
 
-void AEnemyAIController::AIOnSeePawn(APawn* pawn)
+void AEnemyAIController::AIOnSeePawn(APawn* inpawn)
 {
 	// If player was previously heard behind the AI, instantly become hostile
 	// Else do a spot check
-	const FGameplayTag PawnTag = m_PawnOwner->SensingPawn(pawn);
+	const FGameplayTag PawnTag = m_PawnOwner->SensingPawn(inpawn);
 	if (PawnTag == Tag::Player())	
 	{	
 		switch (m_AIState)
@@ -170,7 +171,7 @@ void AEnemyAIController::AIOnSeePawn(APawn* pawn)
 		case ESmallEnemyAIState::Idle:
 		{
 			if (m_EIdleState == EIdleState::Sleeping) break;
-			AlertedInit(*pawn);
+			AlertedInit(*inpawn);
 			AlertedTimeCheck();
 			TM_AI.SetTimer(TH_SpotPlayer, this, &AEnemyAIController::SpotPlayer, TimeToSpotPlayer);
 			break;
@@ -178,7 +179,7 @@ void AEnemyAIController::AIOnSeePawn(APawn* pawn)
 		case ESmallEnemyAIState::Alerted:
 		{
 			AlertedTimeCheck();
-			AlertedInit(*pawn);
+			AlertedInit(*inpawn);
 			break;
 		}
 		case ESmallEnemyAIState::ChasingTarget:		break;

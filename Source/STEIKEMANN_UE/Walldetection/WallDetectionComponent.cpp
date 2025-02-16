@@ -84,13 +84,13 @@ bool UWallDetectionComponent::DetectStickyWall(const AActor* actor, const FVecto
 		return true;
 
 		// Do I really need to check the tag? This should maybe just be trace channel instead
-		IGameplayTagAssetInterface* tag = Cast<IGameplayTagAssetInterface>(Hit.GetActor());
-		if (!tag) return false;
+		//IGameplayTagAssetInterface* tag = Cast<IGameplayTagAssetInterface>(Hit.GetActor());
+		//if (!tag) return false;
 
-		FGameplayTagContainer con;
-		tag->GetOwnedGameplayTags(con);
-		if (con.HasTag(Tag::StickingWall()))
-			return true;
+		//FGameplayTagContainer con;
+		//tag->GetOwnedGameplayTags(con);
+		//if (con.HasTag(Tag::StickingWall()))
+		//	return true;
 	}
 
 	return false;

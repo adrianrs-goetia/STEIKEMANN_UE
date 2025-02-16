@@ -142,6 +142,9 @@ public: // Functions
 		float AttackJumpStrength{ 1200.f };
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chomp")
 		float PostChomp_StunTime{ 1.5f };
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AttackInterface|Grapplehook")
+		float AttackInterface_LeewayPause_Timedilation{ 0.35f };
 	FTimerHandle TH_PostChompStun;
 	void AttackJump();
 	void CHOMP_Pure();
